@@ -60,18 +60,19 @@ class Producto extends Conectar{
         return $resultado=$sql->fetchAll();
     }
     //insertar
-    public function insert_producto($prod_nom){
+    public function insert_producto($prod_nom,$prod_desc){
         //segun la documentacion, tenemos que crear una variable conectar
         //como esta estendido con Conectar, se va poder utilizar la vacunacion
         $conectar=parent::conexion();
         //llamamos al metodo para las ñ y caracteres puedan interactuar en mi proyecto
         parent::set_names();
         //now() saca la fecha y hora del sistema
-        $sql="INSERT INTO tm_producto ( prod_id,  prod_nom,  fech_crea,  fech_modi,  fech_elim,  est) VALUES (NULL, ?, now(), NULL, NULL, 1);";
+        $sql="INSERT INTO tm_producto ( prod_id,  prod_nom, prod_desc,  fech_crea,  fech_modi,  fech_elim,  est) VALUES (NULL, ?,?, now(), NULL, NULL, 1);";
         //ahora executamos el metodo registrar 
         $sql=$conectar->prepare($sql);
         //segun documentacion  esto sera enviado a la primera incoginita de la consulta
         $sql->bindValue(1,$prod_nom);
+        $sql->bindValue(2,$prod_desc);
         //ejecutamos la query
         $sql->execute();
         //ahora tenemos que esperar que retorne los datos
@@ -80,19 +81,20 @@ class Producto extends Conectar{
     }
 
     //actualizar o editar
-    public function update_producto($prod_id,$prod_nom){
+    public function update_producto($prod_id,$prod_nom,$prod_desc){
         //segun la documentacion, tenemos que crear una variable conectar
         //como esta estendido con Conectar, se va poder utilizar la vacunacion
         $conectar=parent::conexion();
         //llamamos al metodo para las ñ y caracteres puedan interactuar en mi proyecto
         parent::set_names();
         //now() saca la fecha y hora del sistema
-        $sql="update tm_producto prod_nom=?,fecha_modi=now()  where prod_id=?";
+        $sql="update tm_producto set prod_nom=?,prod_desc=?,fech_modi=now()  where prod_id=?";
         //ahora executamos el metodo registrar 
         $sql=$conectar->prepare($sql);
         //segun documentacion  esto sera enviado a la primera incoginita de la consulta
         $sql->bindValue(1,$prod_nom);
-        $sql->bindValue(2,$prod_id);
+        $sql->bindValue(2,$prod_desc);
+        $sql->bindValue(3,$prod_id);
         //ejecutamos la query
         $sql->execute();
         //ahora tenemos que esperar que retorne los datos

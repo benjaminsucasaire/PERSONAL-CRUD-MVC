@@ -11,7 +11,12 @@
 
                         <div class="form-group">
                         <label class="form-label" for="prod_nom">Nombre</label>
-                        <input type="text"  class="form-control" name="prod_nom" id="prod_nom" placeholder="Ingrese Nombre.." require />
+                        <input type="text"  class="form-control" name="prod_nom" id="prod_nom" placeholder="Ingrese el producto.." require />
+                        </div>
+
+                        <div class="form-group">
+                        <label class="form-label" for="prod_nom">Descripción</label>
+                        <textarea rows="3"  name="prod_desc" id="prod_desc" class="form-control" placeholder="Ingrese la descripción.." require></textarea>
                         </div>
 
                     </div>

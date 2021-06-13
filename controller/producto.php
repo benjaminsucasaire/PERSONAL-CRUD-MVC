@@ -18,6 +18,7 @@ switch ($_GET["op"]){
             //declaramos un sub array  para cada elemento
             $sub_array=array();
             $sub_array[]=$row["prod_nom"];
+            $sub_array[]=$row["prod_desc"];
             //ahora insertamos los botones para editar y eliminar
             //boton editar
             $sub_array[]='<button  type="button" onclick="editar('.$row["prod_id"].');" id="'.$row["prod_id"].'" class="btn btn-outline-primary btn-icon"><div><i class="fa fa-edit"></i></div></button>';
@@ -47,10 +48,10 @@ switch ($_GET["op"]){
          if(empty($_POST["prod_id"])){
             //si dato es un aaray y si datos no trajo ningun array en tonces vamos a insertar
             if(is_array($datos)==true && count($datos)==0){
-                $producto->insert_producto($_POST["prod_nom"]);
+                $producto->insert_producto($_POST["prod_nom"],$_POST["prod_desc"]);
             }
          }else{
-            $producto->update_producto($_POST["prod_id"],$_POST["prod_nom"]);
+            $producto->update_producto($_POST["prod_id"],$_POST["prod_nom"],$_POST["prod_desc"]);
          }
         break;
 
@@ -64,7 +65,10 @@ switch ($_GET["op"]){
                 //y en cada pasada guardamos los datos del array en otro array
                 $output["prod_id"]=$row["prod_id"];
                 $output["prod_nom"]=$row["prod_nom"];
+                $output["prod_desc"]=$row["prod_desc"];
             }
+            //mandamos los datos en un json
+            echo json_encode($output);
         }
         break;
         

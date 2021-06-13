@@ -93,11 +93,21 @@ function guardaryeditar(e){
 
 }
 
-
 function editar(prod_id){
-    console.log(prod_id);
-}
+     //con esto podemos cambiar el titulo del modal
+     $('#mdltitulo').html('Editar Registro');
+     $.post("../../controller/producto.php?op=mostrar",{prod_id:prod_id},function(data){
+        //con ayuda de js vamos a pasar el dato a un json
+        data=JSON.parse(data);
+        //ahora enviamos los datos selecionado a el modal
+        $('#prod_id').val(data.prod_id);
+        $('#prod_nom').val(data.prod_nom);
+        $('#prod_desc').val(data.prod_desc);
+    });
 
+      //llamamos al modal
+      $('#modalmantenimiento').modal('show'); 
+}
 
 function eliminar(prod_id){
 swal.fire({
@@ -115,7 +125,7 @@ swal.fire({
        });
         //una vez que se elimina queremos que se actualice con ajax
         $('#producto_data').DataTable().ajax.reload();
-        
+      
       swal.fire(
         'Eliminado!',
         'El registro se elimino correctamente.',
@@ -139,7 +149,11 @@ swal.fire({
 
 //ahora utlizamos los datos de la documentacion
 $(document).on("click","#btnnuevo",function(){
-    $('#mdltitulo').html("Nuevo Registro");   
+    $('#mdltitulo').html("Nuevo Registro");  
+     //leugo de gurdar reseteamos el formulario
+     $('#producto_form')[0].reset(); 
+     //dejamos vacio el id para que que quede limpio cada ves que queremos crear un nuevo producto
+     $('#prod_id').val('');
 $('#modalmantenimiento').modal("show");
 });
 

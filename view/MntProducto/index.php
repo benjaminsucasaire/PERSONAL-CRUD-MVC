@@ -35,6 +35,7 @@
               <thead>
                 <tr>
                   <th class="wd-15p">Nombre</th>
+                  <th class="wd-15p">Descripción</th>
                   <th class="wd-15p"></th>
                   <th class="wd-20p"></th>
                 </tr>
