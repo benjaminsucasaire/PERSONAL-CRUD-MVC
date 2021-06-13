@@ -2,7 +2,11 @@
 var tabla;
 //creamos una funcion init(){}
 function init(){
-
+  //cuando enviamos los datos por el formulario con submit
+$("#producto_form").on("submit",function(e){
+  //ejecutamos el metodo para guardar que esta en este acrchivo
+  guardaryeditar(e);
+});
 }
 //creamos un document ready
 //cuando el docmento este cargado,llamos a nuestro elemento data tabla
@@ -57,6 +61,38 @@ buttons:[
     }
     }).dataTable();
 });
+
+function guardaryeditar(e){
+  //con esto prevenimos que no guarde 2 veces 
+  e.preventDefault();
+  //luego declaramos una variable 
+  var formData=new FormData($("#producto_form")[0]);
+  //llamamos a un ajax
+
+  $.ajax({
+    url:"../../controller/producto.php?op=guardaryeditar",
+    type:"POST",
+    data:formData,
+    contentType:false,
+    processData:false,
+    success:function(datos){
+      //leugo de gurdar reseteamos el formulario
+      $('#producto_form')[0].reset();
+      //escondemos la ventana modal
+      $("#modalmantenimiento").modal('hide');
+      //es para que recargue la tabla
+      $('#producto_data').DataTable().ajax.reload();
+
+      swal.fire(
+        'Registro!',
+        'Se registro correctamente!',
+        'success'
+      )
+    }
+  });
+
+}
+
 
 function editar(prod_id){
     console.log(prod_id);

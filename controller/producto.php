@@ -46,8 +46,8 @@ switch ($_GET["op"]){
          //preguntamos  si esta vacio el prod_id
          if(empty($_POST["prod_id"])){
             //si dato es un aaray y si datos no trajo ningun array en tonces vamos a insertar
-            if(is_array($datos)==true && count($data)==0){
-                $producto->inset_producto($_POST["prod_id"]);
+            if(is_array($datos)==true && count($datos)==0){
+                $producto->insert_producto($_POST["prod_nom"]);
             }
          }else{
             $producto->update_producto($_POST["prod_id"],$_POST["prod_nom"]);
@@ -58,7 +58,7 @@ switch ($_GET["op"]){
     case "mostrar":
         $datos=$producto->get_producto_x_id($_POST["prod_id"]);
         //preguntamos si tiene informacion
-        if(is_array($datos)==true && count($data)>0){
+        if(is_array($datos)==true && count($datos)>0){
             //creamos un bucle foreach para que recorra todo los datos y lo gurade en una variable
             foreach($datos as $row){
                 //y en cada pasada guardamos los datos del array en otro array

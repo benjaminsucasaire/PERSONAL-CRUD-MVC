@@ -25,7 +25,7 @@ class Producto extends Conectar{
         $conectar=parent::conexion();
         //llamamos al metodo para las ñ y caracteres puedan interactuar en mi proyecto
         parent::set_names();
-        $sql="select * from tm_producto where pro_id=?";
+        $sql="select * from tm_producto where prod_id=?";
         //ahora executamos el metodo registrar 
         $sql=$conectar->prepare($sql);
         //segun documentacion  esto sera enviado a la primera incoginita de la consulta
@@ -60,14 +60,14 @@ class Producto extends Conectar{
         return $resultado=$sql->fetchAll();
     }
     //insertar
-    public function inset_producto($prod_nom){
+    public function insert_producto($prod_nom){
         //segun la documentacion, tenemos que crear una variable conectar
         //como esta estendido con Conectar, se va poder utilizar la vacunacion
         $conectar=parent::conexion();
         //llamamos al metodo para las ñ y caracteres puedan interactuar en mi proyecto
         parent::set_names();
         //now() saca la fecha y hora del sistema
-        $sql="INSERT INTO tm_producto ( prod_id ,  pro_nom ,  fech_crea ,  fech_modi ,  fech_elim ,  est ) VALUES (NULL, ?, now(), NULL, NULL, 1);";
+        $sql="INSERT INTO tm_producto ( prod_id,  prod_nom,  fech_crea,  fech_modi,  fech_elim,  est) VALUES (NULL, ?, now(), NULL, NULL, 1);";
         //ahora executamos el metodo registrar 
         $sql=$conectar->prepare($sql);
         //segun documentacion  esto sera enviado a la primera incoginita de la consulta
@@ -87,7 +87,7 @@ class Producto extends Conectar{
         //llamamos al metodo para las ñ y caracteres puedan interactuar en mi proyecto
         parent::set_names();
         //now() saca la fecha y hora del sistema
-        $sql="update tm_producto prod_nom=?,fecha_modi=now()  where pro_id=?";
+        $sql="update tm_producto prod_nom=?,fecha_modi=now()  where prod_id=?";
         //ahora executamos el metodo registrar 
         $sql=$conectar->prepare($sql);
         //segun documentacion  esto sera enviado a la primera incoginita de la consulta
