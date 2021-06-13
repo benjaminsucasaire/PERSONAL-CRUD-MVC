@@ -30,7 +30,7 @@ buttons:[
     "bDestroy":true,
     "responsive":true,
     "bInfo":true,
-    "iDisplayLength":2,//por cada 10 registros hace una paginacion
+    "iDisplayLength":10,//por cada 10 registros hace una paginacion
     "order":[[0,"asc"]],//Ordenar (columna,orden)
     "language":{
         "sProcessing": "Procesando...",

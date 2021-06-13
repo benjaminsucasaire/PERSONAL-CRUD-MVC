@@ -35,7 +35,10 @@
     <link href="../../public/lib/Ionicons/css/ionicons.css" rel="stylesheet">
     <link href="../../public/lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
     <link href="../../public/lib/jquery-switchbutton/jquery.switchButton.css" rel="stylesheet">
+
     <link href="../../public/lib/datatables/jquery.dataTables.css" rel="stylesheet">
+    <link href="../../public/datatables/buttons.dataTables.min.css" rel="stylesheet">
+
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="../../public/css/bracket.css">
   </head>
@@ -722,7 +725,12 @@
     <script src="../../public/js/bracket.js"></script>
      
     <script src="../../public/lib/datatables/jquery.dataTables.js"></script>
-  <script src="../../public/lib/datatables-responsive/dataTables.responsive.js"></script>
+    <script src="../../public/lib/datatables-responsive/dataTables.responsive.js"></script>
+
+    <script src="../../public/datatables/dataTables.buttons.min.js"></script>  
+    <script src="../../public/datatables/buttons.html5.min.js"></script>  
+    <script src="../../public/datatables/buttons.colVis.min.js"></script>  
+    <script src="../../public/datatables/jszip.min.js"></script>  
 
     <script  type="text/javascript" src="mntproducto.js"></script>
   </body>
