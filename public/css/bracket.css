@@ -58737,3 +58737,13 @@ a.hover-white-8:hover, a.hover-white-8:focus {
 .mx-wd-1350 {
   max-width: 1350px;
 }
+
+.boton-nuevo-prod {
+  width: 100%;
+  
+}
+@media screen and (min-width: 644px) {
+  .boton-nuevo-prod {
+    max-width: 168px; 
+  }
+}

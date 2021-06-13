@@ -45,7 +45,10 @@ class Producto extends Conectar{
         //llamamos al metodo para las ñ y caracteres puedan interactuar en mi proyecto
         parent::set_names();
         //now() saca la fecha y hora del sistema
-        $sql="update tm_producto set=0,fecha_elim=now()  where pro_id=?";
+        $sql="UPDATE tm_producto SET fech_elim = now(),est =0 WHERE prod_id = ?";
+        // var_dump($sql);
+        //UPDATE tm_producto SET fech_elim = now(),est =0 WHERE prod_id = 5;
+        // die();
         //ahora executamos el metodo registrar 
         $sql=$conectar->prepare($sql);
         //segun documentacion  esto sera enviado a la primera incoginita de la consulta

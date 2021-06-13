@@ -39,4 +39,36 @@ switch ($_GET["op"]){
 
         break;
        
+
+    case "guardaryeditar":
+         //llamamos a la funcion/metodo que tendra el objeto y lo pasaremos todos esos datos en $datos
+         $datos=$producto->get_producto_x_id($_POST["prod_id"]);
+         //preguntamos  si esta vacio el prod_id
+         if(empty($_POST["prod_id"])){
+            //si dato es un aaray y si datos no trajo ningun array en tonces vamos a insertar
+            if(is_array($datos)==true && count($data)==0){
+                $producto->inset_producto($_POST["prod_id"]);
+            }
+         }else{
+            $producto->update_producto($_POST["prod_id"],$_POST["prod_nom"]);
+         }
+        break;
+
+     //va traer todos los datos y lo colocaremos en un json para poder reutilizarlo   
+    case "mostrar":
+        $datos=$producto->get_producto_x_id($_POST["prod_id"]);
+        //preguntamos si tiene informacion
+        if(is_array($datos)==true && count($data)>0){
+            //creamos un bucle foreach para que recorra todo los datos y lo gurade en una variable
+            foreach($datos as $row){
+                //y en cada pasada guardamos los datos del array en otro array
+                $output["prod_id"]=$row["prod_id"];
+                $output["prod_nom"]=$row["prod_nom"];
+            }
+        }
+        break;
+        
+    case "eliminar":
+        $producto->delete_producto($_POST["prod_id"]);
+        break;    
 }

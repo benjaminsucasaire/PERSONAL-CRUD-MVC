@@ -58,5 +58,53 @@ buttons:[
     }).dataTable();
 });
 
+function editar(prod_id){
+    console.log(prod_id);
+}
+
+
+function eliminar(prod_id){
+swal.fire({
+    title: 'CRUD',
+    text: "Estas seguro de eliminar el registro?",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Si, Eliminar!',
+    cancelButtonText: 'No, Cancelar!',
+    reverseButtons: true
+  }).then((result) => {
+    if (result.isConfirmed) {
+       $.post("../../controller/producto.php?op=eliminar",{prod_id:prod_id},function(data){
+
+       });
+        //una vez que se elimina queremos que se actualice con ajax
+        $('#producto_data').DataTable().ajax.reload();
+        
+      swal.fire(
+        'Eliminado!',
+        'El registro se elimino correctamente.',
+        'success'
+      )
+      
+    } else if (
+      /* Read more about handling dismissals below */
+      result.dismiss === Swal.DismissReason.cancel
+    ) {
+      swal.fire(
+        'cancelado',
+        'Tu producto  está a salvo :)',
+        'error'
+      )
+    }
+  })
+
+
+}
+
+//ahora utlizamos los datos de la documentacion
+$(document).on("click","#btnnuevo",function(){
+    $('#mdltitulo').html("Nuevo Registro");   
+$('#modalmantenimiento').modal("show");
+});
 
 init();
