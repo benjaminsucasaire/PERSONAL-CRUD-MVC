@@ -1,1 +1,2 @@
-<h1>Login</h1>
+<?php
+header('Location: '.'/view/MntProducto/index.php');
